@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <projects v-if="loggedIn"></projects>
-      <login-register v-else></login-register>
+      <Projects v-if="loggedIn" />
+      <LoginRegister v-else />
     </div>
   </div>
 </template>
@@ -29,8 +29,8 @@ export default {
     };
   },
   components: {
-    "login-register": LoginRegister,
-    projects: Projects,
+    LoginRegister,
+    Projects,
   },
 };
 </script>
@@ -46,17 +46,22 @@ body {
   background: #a9d6e5;
 }
 
-h1 {
+h1,
+h2,
+h3 {
   font-weight: 400;
   letter-spacing: 1px;
   opacity: 0.8;
 }
 
-h2 {
-  font-weight: 400;
-  letter-spacing: 1px;
+h2,
+h3 {
   margin-bottom: 15px;
+}
+
+p {
   opacity: 0.8;
+  letter-spacing: 1px;
 }
 
 .navbar {

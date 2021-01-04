@@ -1,9 +1,7 @@
 <template>
   <div>
-    <h3>Project Item</h3>
-    <h3>Project Item</h3>
-    <h3>Project Item</h3>
-    <h3>Project Item</h3>
+    <h3>Project Name</h3>
+    <p>Project Details</p>
   </div>
 </template>
 

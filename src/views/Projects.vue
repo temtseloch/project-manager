@@ -2,11 +2,12 @@
   <div>
     <div class="navbar">
       <h1>Project Manager</h1>
-
       <a class="nav-link" @click="signOut">Sign Out</a>
     </div>
+
     <div id="projects">
-      <project-list></project-list>
+      <CreateProject />
+      <ProjectList />
     </div>
   </div>
 </template>
@@ -15,8 +16,14 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import ProjectList from "../components/ProjectList";
+import CreateProject from "../components/CreateProject";
 
 export default {
+  components: {
+    CreateProject,
+    ProjectList,
+  },
+
   methods: {
     async signOut() {
       try {
@@ -28,14 +35,7 @@ export default {
       }
     },
   },
-  components: {
-    "project-list": ProjectList,
-  },
 };
 </script>
 
-<style lang="scss" scoped>
-h2 {
-  text-align: center;
-}
-</style>
+<style lang="scss" scoped></style>

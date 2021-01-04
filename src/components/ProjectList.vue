@@ -2,7 +2,7 @@
   <div>
     <h2>Projects</h2>
     <div>
-      <project-item></project-item>
+      <ProjectItem />
     </div>
   </div>
 </template>
@@ -11,9 +11,10 @@
 import ProjectItem from "./ProjectItem";
 
 export default {
-  name: "ProjectLsit",
+  name: "ProjectList",
+
   components: {
-    "project-item": ProjectItem,
+    ProjectItem,
   },
 };
 </script>
