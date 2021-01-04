@@ -49,12 +49,14 @@ body {
 h1 {
   font-weight: 400;
   letter-spacing: 1px;
+  opacity: 0.8;
 }
 
 h2 {
   font-weight: 400;
   letter-spacing: 1px;
   margin-bottom: 15px;
+  opacity: 0.8;
 }
 
 .navbar {
@@ -63,26 +65,30 @@ h2 {
   align-items: center;
   padding: 10px 50px;
   background-color: #48cae4;
-}
 
-.nav-links {
-  width: 150px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .nav-links {
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-.nav-link {
-  text-decoration: none;
-  color: black;
-  cursor: pointer;
-  letter-spacing: 1px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
+  .nav-link {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    opacity: 0.8;
 
-.nav-link:hover {
-  color: #caf0f8;
+    &.router-link-exact-active {
+      color: #f1faee;
+    }
+  }
+  .nav-link:hover {
+    color: #f1faee;
+  }
 }
 
 #login,
@@ -111,6 +117,12 @@ button {
   padding: 5px 5px;
   border-radius: 10px;
   margin-bottom: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #f1faee;
 }
 
 .error {

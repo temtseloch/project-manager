@@ -6,7 +6,7 @@
       <a class="nav-link" @click="signOut">Sign Out</a>
     </div>
     <div id="projects">
-      <h2>Projects</h2>
+      <project-list></project-list>
     </div>
   </div>
 </template>
@@ -14,6 +14,7 @@
 <script>
 import firebase from "firebase/app";
 import "firebase/auth";
+import ProjectList from "../components/ProjectList";
 
 export default {
   methods: {
@@ -26,6 +27,9 @@ export default {
         console.log(err);
       }
     },
+  },
+  components: {
+    "project-list": ProjectList,
   },
 };
 </script>

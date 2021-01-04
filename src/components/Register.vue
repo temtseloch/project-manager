@@ -36,7 +36,7 @@ export default {
   methods: {
     async pressed() {
       try {
-        const user = firebase
+        const user = await firebase
           .auth()
           .createUserWithEmailAndPassword(this.email, this.password);
         console.log(user);
