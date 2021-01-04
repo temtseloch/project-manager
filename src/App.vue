@@ -1,32 +1,125 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <projects v-if="loggedIn"></projects>
+      <login-register v-else></login-register>
     </div>
-    <router-view/>
   </div>
 </template>
 
+<script>
+import firebase from "firebase/app";
+import "firebase/auth";
+import LoginRegister from "./views/LoginRegister";
+import Projects from "./views/Projects";
+
+export default {
+  created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.loggedIn = true;
+      } else {
+        this.loggedIn = false;
+      }
+    });
+  },
+  data() {
+    return {
+      loggedIn: false,
+    };
+  },
+  components: {
+    "login-register": LoginRegister,
+    projects: Projects,
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-#nav {
-  padding: 30px;
+body {
+  background: #a9d6e5;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+h1 {
+  font-weight: 400;
+  letter-spacing: 1px;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+h2 {
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  background-color: #48cae4;
+}
+
+.nav-links {
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #caf0f8;
+}
+
+#login,
+#register {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  margin: 50px 0;
+}
+
+.form-input {
+  margin-bottom: 15px;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+button {
+  width: 100px;
+  padding: 5px 5px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.error {
+  text-align: center;
+  color: red;
+}
+
+#projects {
+  text-align: center;
+  margin: 50px 0;
 }
 </style>
