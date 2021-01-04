@@ -1,9 +1,9 @@
 <template>
   <div>
     <h2>
-      Create New Project
+      Edit Project
     </h2>
-    <form @submit.prevent="createProject">
+    <form @submit.prevent="editProject">
       <input
         class="form-input"
         type="text"
@@ -18,15 +18,16 @@
         v-model="project.details"
         placeholder="Project Detail"
       />
-      <button type="submit">Create</button>
+      <button type="submit">Update</button>
     </form>
   </div>
 </template>
 
 <script>
 import { db } from "../main";
+
 export default {
-  name: "CreateProject",
+  name: "EditProject",
   data() {
     return {
       project: {
@@ -35,13 +36,15 @@ export default {
       },
     };
   },
+
   methods: {
-    createProject(e) {
-      e.preventDefault();
+    editProject(event) {
+      event.preventDefault();
       db.collection("projects")
-        .add(this.project)
+        .doc(this.project.key)
+        .update(this.project)
         .then(() => {
-          alert("Project successfully created!");
+          console.log("Project successfully updated!");
           this.project.name = "";
           this.project.details = "";
         })

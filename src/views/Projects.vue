@@ -8,6 +8,7 @@
     <div id="projects">
       <CreateProject />
       <ProjectList />
+      <EditProject />
     </div>
   </div>
 </template>
@@ -17,11 +18,13 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import ProjectList from "../components/ProjectList";
 import CreateProject from "../components/CreateProject";
+import EditProject from "../components/EditProject";
 
 export default {
   components: {
     CreateProject,
     ProjectList,
+    EditProject,
   },
 
   methods: {
